@@ -38,20 +38,10 @@ namespace CMP1903M_A01_2223
             return suit;
         }
 
-        // takes the face and suit and formats it into a string
         public override string ToString()
         {
-            return "Face: " + face + " Suit: " + suit;
+            return $"{face}-{suit}";
         }
 
-        public static implicit operator Card(int v)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static implicit operator int(Card v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
