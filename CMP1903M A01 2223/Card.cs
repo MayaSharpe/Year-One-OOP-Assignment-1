@@ -1,50 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+
+// create a 'card' class
+// each card has a face and a suit
+// the face is an integer from 1 to 13
+// the suit is an integer from 1 to 4
 
 namespace CMP1903M_A01_2223
 {
     class Card
     {
-        //Base for the Card class.
-        //Value: numbers 1 - 13
-        //Suit: numbers 1 - 4
-        //The 'set' methods for these properties could have some validation
+        // create the 'face' and 'suit' variables
+        private int face;
+        private int suit;
 
-        private int Suit;
-        private int Value;
-
-        public Card(int csuit, int cValue)
+        // create the 'Card' constructor
+        public Card(int face, int suit)
         {
-            Suit = csuit;
-            Value = cValue;
+            // set up the face and suit variables for this instance of a card
+            this.face = face;
+            this.suit = suit;
         }
 
-        public int suit 
+        // create the method to get th face
+        public int getFace()
         {
-            get { return Suit; }
-            set 
-            { 
-          
-                if (value == 1 || value == 2 || value == 3 || value == 4)
-                {
-                    Suit = value;
-                }
-                else
-                {
-                    Value = 0;
-                }
-            }
+            return face;
         }
 
-        public int CValue 
+        // create the method to et the suit
+        public int getSuit()
         {
-            get { }
-            set { }
+            return suit;
         }
-        
 
+        // takes the face and suit and formats it into a string
+        public override string ToString()
+        {
+            return "Face: " + face + " Suit: " + suit;
+        }
+
+        public static implicit operator Card(int v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static implicit operator int(Card v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
