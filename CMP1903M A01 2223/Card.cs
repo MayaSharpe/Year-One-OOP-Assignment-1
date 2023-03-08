@@ -26,18 +26,19 @@ namespace CMP1903M_A01_2223
             this.suit = suit;
         }
 
-        // create the method to get th face
+        // create the method to get the face
         public int getFace()
         {
             return face;
         }
 
-        // create the method to et the suit
+        // create the method to get the suit
         public int getSuit()
         {
             return suit;
         }
 
+        //formats the values from the object into this string format
         public override string ToString()
         {
             return $"{face}-{suit}";

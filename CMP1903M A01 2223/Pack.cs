@@ -10,7 +10,7 @@ namespace CMP1903M_A01_2223
 {
     class Pack
     {
-        //Create the 'cards_create' and 'current_card' variables
+        //initialise variabes to be used within the class
         static List<Card> cards_create;
         static Card current_card;
         static Card temp_Hold;
@@ -40,8 +40,7 @@ namespace CMP1903M_A01_2223
         //Create the 'shuffleCardPack' method
         public static bool shuffleCardPack(int typeOfShuffle)
         {
-
-
+            
             if (typeOfShuffle == 1) // Code for a Fisher - Yates shuffle
             {
                 Random randomGen = new Random();
@@ -50,8 +49,8 @@ namespace CMP1903M_A01_2223
                 {
                     int randomIndex = randomGen.Next(0, cards_create.Count);
                     Card temp_Hold = cards_create[i];                 //temporarily holds the value at index i
-                    cards_create[i] = cards_create[randomIndex];      // the takes the value held at index [i+26] and replaces [i] with it
-                    cards_create[randomIndex] = temp_Hold;               // re places the value at [i + 26] with [i]
+                    cards_create[i] = cards_create[randomIndex];      // the takes the value held at index [i] and replaces it with the value at [randomindex]
+                    cards_create[randomIndex] = temp_Hold;               // takes the card held in temp_Hold and places it at the random index
 
                 }
 
@@ -60,12 +59,12 @@ namespace CMP1903M_A01_2223
             }
             else if (typeOfShuffle == 2) // Code for a Riffle shuffle
             {
-                int halfWay = cards_create.Count / 2;
-                List<Card> firstHalf = new List<Card>();
-                List<Card> secondHalf = new List<Card>();
-                List<Card> output = new List<Card>();
+                int halfWay = cards_create.Count / 2;        //finds the halfway point of the list
+                List<Card> firstHalf = new List<Card>();     //creates two new lists to hold the first and second half of the list
+                List<Card> secondHalf = new List<Card>(); 
+                List<Card> output = new List<Card>();       //creates a new list to hold the output of the shuffle
 
-                for (int i = 0; i < halfWay; i++)
+                for (int i = 0; i < halfWay; i++)       //adds the first half of the list to the first half list and the second half to the second half list
                 {
                     firstHalf.Add(cards_create[i]);
                 }
@@ -73,24 +72,32 @@ namespace CMP1903M_A01_2223
                 {
                     secondHalf.Add(cards_create[i]);
                 }
-                for (int i = 0; i < halfWay; i++)
+                for (int i = 0; i < halfWay; i++)          //adds the first half of the list to the output list then adds the second half of the list to the output list one at a time from each list until both are finished.
                 {
-                    output.Add(firstHalf[i]);
+                    output.Add(firstHalf[i]);      
                     output.Add(secondHalf[i]);
                 }
-                cards_create.Clear();
-                cards_create.AddRange(output);
+                cards_create.Clear();                  //clears the original list
+                cards_create.AddRange(output);        //adds the output list to the original list
 
             }
             else if (typeOfShuffle == 3) // Code for no shuffle
             {
-                Console.WriteLine("No shuffle");
+                Console.WriteLine("You have Not selected a shuffle");
 
             }
-            else return false;
-            return true;
+            else return false;   //returns false if the user has not selected a shuffle
+            return true;         //returns true if the user has selected a shuffle
         }
 
+        //Creates a method to deal a single card
+        public static Card deal()
+        {
+            //takes the first card 
+            current_card = cards_create[0];
+            //returns that card
+            return current_card;
+        }
 
 
 
@@ -101,9 +108,9 @@ namespace CMP1903M_A01_2223
             //Create the 'for' loop to deal the cards
             for (int i = 0; i < hand_size; i++)
             {
-                dealt_cards.Add(cards_create[i]);
+                dealt_cards.Add(cards_create[i]);    //adds the card at index i to the dealt cards list
             }
-            return dealt_cards;        
+            return dealt_cards;       //returns that card    
         }
 
 

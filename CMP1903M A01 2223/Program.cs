@@ -12,8 +12,10 @@ namespace CMP1903M_A01_2223
     {
         static void Main(string[] args)
         {
+            //calls the testing class and runs the code_test method
             Testing tests = new Testing();
             tests.code_test();
+            //ReadLine allows the console to stay open
             Console.ReadLine();
 
         }
